@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Material Castor/BotaoJogar.png" type="Texture" id=2]
+[ext_resource path="res://Material Castor/BotaoSair.png" type="Texture" id=3]
+[ext_resource path="res://Material Castor/TituloSinCastores.png" type="Texture" id=4]
+[ext_resource path="res://Material Castor/fundo menu.jpg" type="Texture" id=5]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 4.0
+margin_bottom = 2.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.476
+anchor_top = 0.603
+anchor_right = 0.476
+anchor_bottom = 0.603
+margin_left = -108.28
+margin_top = -26.16
+margin_right = 103.72
+margin_bottom = 189.84
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 260.0
+margin_bottom = 224.0
+alignment = 1
+
+[node name="Iniciar" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 109.0
+icon = ExtResource( 2 )
+flat = true
+icon_align = 1
+
+[node name="Sair" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 113.0
+margin_right = 260.0
+margin_bottom = 224.0
+shortcut_in_tooltip = false
+icon = ExtResource( 3 )
+flat = true
+icon_align = 1
+
+[node name="Sprite" type="Sprite" parent="MarginContainer/VBoxContainer"]
+position = Vector2( 116.64, -100.28 )
+scale = Vector2( 3.1025, 3.295 )
+texture = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 675.25, 439 )
+scale = Vector2( 1.14654, 1.30357 )
+z_index = -1
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Iniciar" to="." method="_on_Iniciar_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sair" to="." method="_on_Sair_pressed"]

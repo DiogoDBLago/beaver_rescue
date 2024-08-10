@@ -1,0 +1,78 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Material Castor/fundo/fundo4.png" type="Texture" id=2]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Princesa.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Combustivel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Jacare.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Main.gd" type="Script" id=7]
+[ext_resource path="res://Material Castor/fundo/fundo5.png" type="Texture" id=8]
+[ext_resource path="res://Material Castor/fundo/fundo2.png" type="Texture" id=9]
+[ext_resource path="res://Material Castor/fundo/fundo3.png" type="Texture" id=10]
+[ext_resource path="res://Material Castor/fundo/fundo0.png" type="Texture" id=11]
+[ext_resource path="res://Material Castor/fundo/fundo1.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 116, 87 )
+scale = Vector2( 1.8, 1.8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2084, 285 )
+scale = Vector2( 12.03, 21 )
+z_index = -2
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="Princesa" parent="." instance=ExtResource( 4 )]
+position = Vector2( 153, -331 )
+scale = Vector2( 1.8, 1.8 )
+
+[node name="Combustivel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 228, -270 )
+scale = Vector2( 1.8, 1.8 )
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Jacare" parent="." instance=ExtResource( 6 )]
+position = Vector2( 247, -348 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="gerajacare" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="geraprincesa" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="geranoz" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="fase" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="reinicio" type="Timer" parent="."]
+
+[connection signal="morreu" from="Player" to="." method="_on_Player_morreu"]
+[connection signal="timeout" from="gerajacare" to="." method="_on_gerajacare_timeout"]
+[connection signal="timeout" from="geraprincesa" to="." method="_on_geraprincesa_timeout"]
+[connection signal="timeout" from="geranoz" to="." method="_on_geranoz_timeout"]
+[connection signal="timeout" from="fase" to="." method="_on_Fase_timeout"]
+[connection signal="timeout" from="reinicio" to="." method="_on_reinicio_timeout"]

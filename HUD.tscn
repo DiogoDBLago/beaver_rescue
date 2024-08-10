@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Material Castor/HUD/Retro Gaming.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Material rescue/HUD/hud0.png" type="Texture" id=2]
+[ext_resource path="res://Material rescue/HUD/hud1.png" type="Texture" id=3]
+[ext_resource path="res://HUD.gd" type="Script" id=4]
+[ext_resource path="res://Material Castor/HUD/healthbar.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="pontos" type="Label" parent="."]
+margin_left = 408.0
+margin_top = 3.0
+margin_right = 1046.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 1 )
+text = "000"
+align = 1
+valign = 1
+
+[node name="combustivel" type="TextureProgress" parent="."]
+margin_left = 55.0
+margin_top = 711.0
+margin_right = 591.0
+margin_bottom = 732.0
+rect_scale = Vector2( 0.303544, 1 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+nine_patch_stretch = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 111, 767 )
+texture = ExtResource( 5 )
